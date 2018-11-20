@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node start",
-    "dev": "./node_modules/.bin/nodemon start",
-    "prd": "pm2 start start",
+    "start": "node bin/start",
+    "dev": "./node_modules/.bin/nodemon bin/start",
+    "prd": "pm2 start bin/start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
