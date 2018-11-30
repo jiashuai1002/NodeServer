@@ -1,0 +1,1277 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="数据分析 监控 地产数据分析 医药数据分析 口碑监测 口碑监控 舆情 品牌 公关 大数据 数据服务 大数据分析 数据分析工具">
+    <meta name="description" content="复星观云数据分析平台聚焦行业社交媒体舆情分析，基于全网数据，提供及时、精准的品牌观测和社会聆听。">
+    <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1275091703'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol +
+            "s22.cnzz.com/z_stat.php%3Fid%3D1275091703' type='text/javascript'%3E%3C/script%3E"));
+        document.getElementById("cnzz_stat_icon_1275091703").style.display = "none";
+        var _czc = _czc || [];
+        _czc.push(["_setAccount", "1275091703"]);
+    </script>
+
+    <script src="https://jic.talkingdata.com/app/h5/v1?appid=16722D9960E84AE781399A3CAB0B65D1&vn=观云官网&vc=1.0.1"></script>
+    <!-- <link rel="icon" href="../img/qy-last-logo.jpg" type="image/x-icon" /> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<link rel="shortcut icon" href="/images/favicon-32.ico?time=20170719" type="image/x-icon" />
+    <script>
+        (function () {
+            var ua = navigator.userAgent;
+
+            var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+
+                isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+
+                isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+
+                isMobile = isIphone || isAndroid;
+            if (isMobile) {
+                // window.location.href = "http://test-m.guanyun.fonova.cn/#/officialWebsite";
+                window.location.href = "https://m-guanyun.fonova.ai";
+            }
+        }())
+
+        $(document).ready(function(){
+            
+            $(".divFixedBtn").off();
+            $(".divFixedBtn").on("mouseover",function(){
+                $(this).find(".imgFixedBtn").addClass("hidden");
+                $(this).find(".divTextBtn").removeClass("hidden");
+                $(this).find(".divInfo").removeClass("hidden");
+                $(this).find(".divInfo").stop().animate({"opacity":1,"left":-210},500);
+        
+            });
+            $(".divFixedBtn").on("mouseout",function(){
+                
+                $(this).find(".imgFixedBtn").removeClass("hidden");
+                $(this).find(".divTextBtn").addClass("hidden");
+                $(this).find(".divInfo").addClass("hidden");
+                $(this).find(".divInfo").stop().animate({"opacity":0,"left":-240},0);
+          
+            });
+
+            $(window).scroll(function(){
+      
+                if($(window).scrollTop() == 0){
+                    $(".btnLast").addClass("hidden");
+                }else{
+                    $(".btnLast").removeClass("hidden");
+                }
+
+            });
+
+            $(".btnLast").off("click");
+            $(".btnLast").on("click",function(){
+                // $(window).scrollTop(0);
+                $('html,body').animate({"scrollTop":0},500);
+            });
+
+            setTimeout(() => {
+                $('html,body').scrollTop(0);
+            }, 200);
+        });
+
+    </script>
+    <style>
+        html,
+        body,
+        div,
+        object,
+        iframe,
+        applet,
+        object,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        pre,
+        address,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        img,
+        span {
+            margin: 0;
+            padding: 0;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        /* LOADING */
+        .loading {
+            z-index: 110;
+            background: white;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes loading-3 {
+            50% {
+                transform: scale(0.4);
+                opacity: .4;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .loading-box {
+            position: relative;
+            bottom: 1rem;
+        }
+
+        .loading-box i {
+            display: block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #999;
+            position: absolute;
+        }
+
+        .loading-box i:nth-child(1) {
+            top: 25px;
+            left: 0;
+            animation: loading-3 1s ease 0s infinite;
+        }
+
+        .loading-box i:nth-child(2) {
+            top: 17px;
+            left: 17px;
+            animation: loading-3 1s ease -0.12s infinite;
+        }
+
+        .loading-box i:nth-child(3) {
+            top: 0px;
+            left: 25px;
+            animation: loading-3 1s ease -0.24s infinite;
+        }
+
+        .loading-box i:nth-child(4) {
+            top: -17px;
+            left: 17px;
+            animation: loading-3 1s ease -0.36s infinite;
+        }
+
+        .loading-box i:nth-child(5) {
+            top: -25px;
+            left: 0;
+            animation: loading-3 1s ease -0.48s infinite;
+        }
+
+        .loading-box i:nth-child(6) {
+            top: -17px;
+            left: -17px;
+            animation: loading-3 1s ease -0.6s infinite;
+        }
+
+        .loading-box i:nth-child(7) {
+            top: 0px;
+            left: -25px;
+            animation: loading-3 1s ease -0.72s infinite;
+        }
+
+        .loading-box i:nth-child(8) {
+            top: 17px;
+            left: -17px;
+            animation: loading-3 1s ease -0.84s infinite;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .border-top {
+            border-top: 1px solid #e0e0e0;
+        }
+        .container {
+            position: relative;
+            /* overflow: hidden; */
+            width: 100%;
+            /* height: 100%; */
+        }
+
+        .top {
+            width: 100%;
+            height: 80px;
+            background: #203056;
+            overflow: hidden;
+            min-width: 1124px;
+        }
+
+        .top>img {
+            width: 250px;
+            margin-left: 30px;
+            margin-top: 25px;
+        }
+
+        .banner {
+            width: 100%;
+            height: 430px;
+            background-size: 100% 100%;
+            background-image: url(/images/page/official/official_bg.jpg);
+            font-size: 40px;
+            color: white;
+            overflow: hidden;
+            min-width: 1124px;
+        }
+
+        .banner .banner-text {
+            margin-top: 80px;
+            margin-left: 150px;
+            line-height: 1.6;
+            font-weight: 100;
+            letter-spacing: 1.81px;
+            width: 600px;
+            white-space: nowrap;
+        }
+
+        .banner .banner-line {
+            width: 220px;
+            height: 2px;
+            background: #fff;
+            margin-left: 150px;
+            margin-top: 045px;
+        }
+
+        .banner .button {
+            margin: 0 auto;
+            width: 124px;
+            height: 40px;
+            background: rgba(0, 114, 191, 0.5);
+            border: 1px solid #ffffff;
+            font-size: 18px;
+            text-align: center;
+            line-height: 40px;
+            letter-spacing: .6px;
+            margin-left: 150px;
+            margin-top: 50px;
+        }
+
+        .banner .button:hover {
+            background: rgba(157, 215, 255, 0.40);
+            border: 1px solid #FFFFFF;
+            cursor: pointer;
+        }
+
+        .font-title {
+            font-family: PingFangSC-Medium;
+            font-size: 28px!important;
+            color: #333333;
+            letter-spacing: 0.94px;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav {
+            width: 100%;
+            /* height: 2.5rem; */
+            height: 250px;
+            /* padding: 0 1rem; */
+            /* margin-bottom: 1rem; */
+        }
+
+        .nav>div {
+            /* width: 3.3rem; */
+            width: 280px;
+            height: 100%;
+        }
+
+        .nav-img {
+            width: 56px;
+            height: 56px;
+            float: left;
+        }
+
+        .nav-title {
+            float: left;
+            line-height: 56px;
+            margin-left: 20px;
+        }
+
+        .nav-text {
+            width: 100%;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #333333;
+            letter-spacing: 0.47px;
+            line-height: 25px;
+        }
+
+        .nav-div {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .nav-flex {
+            padding: 40px 0;
+            flex-direction: column;
+        }
+
+        .content-img,
+        .content-div {
+            width: 380px;
+            height: 190px;
+            margin-bottom: 130px;
+        }
+
+        .content-div {
+            padding-top: 10px;
+        }
+
+        .linebox {
+            width: 200px;
+            height: 2px;
+            overflow: hidden;
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+
+        .linebox>div {
+            height: 100%;
+            float: left;
+        }
+
+        .linebox>div:nth-of-type(1) {
+            width: .8rem;
+            background: #1175D8;
+        }
+
+        .linebox>div:nth-of-type(2) {
+            width: 120px;
+            background: #BADFF9;
+        }
+
+        .content-box>div:nth-of-type(1) {
+            display: flex;
+            justify-content: space-around;
+            /* padding: 0 4.6rem; */
+            padding-top: 100px;
+            flex-wrap: wrap;
+        }
+
+        .content-text {
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #000000;
+            letter-spacing: 0.54px;
+            line-height: 26px;
+        }
+
+        .more-button {
+            background: #32C7B2;
+            width: 120px;
+            height: 40px;
+            cursor: pointer;
+            font-family: PingFangSC-Medium;
+            font-size: 16px;
+            color: #FFFFFF;
+            letter-spacing: 0.54px;
+            text-align: center;
+            line-height: 40px;
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+
+        .more-button:hover {
+            background: #3DA8FE;
+        }
+
+        .label-content {
+            width: 100%;
+            height: 600px;
+            background: #F2FAFF;
+            overflow: hidden;
+        }
+        
+
+        .label-box {
+            /* padding: 0 3.5rem; */
+        }
+
+        .label-content .font-title {
+            margin: 66px auto;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .label-item {
+            width: 212px;
+            height: 260px;
+            background: #fff;
+        }
+
+        .label-item>div:nth-of-type(1) {
+            width: 212px;
+            height: 100px;
+            background-image: linear-gradient(90deg, #3DA8FE 0%, #31BCF8 100%);
+            font-family: PingFangSC-Medium;
+            font-size: 24px;
+            color: #FFFFFF;
+            letter-spacing: 0.8px;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .label-item>div:nth-of-type(2) {
+            height: 160px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .label-item>div>div {
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #333333;
+            letter-spacing: 0.54px;
+            text-align: center;
+            line-height: 32px;
+        }
+
+        .label-content .more-button,
+        .terminal-content>.more-button {
+            margin-top: 64px;
+        }
+
+        .service-content>.more-button {
+            margin-top: 44px;
+        }
+
+        .terminal-content {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .terminal-content>.font-title,
+        .service-content>.font-title {
+            margin: 66px auto;
+            text-align: center;
+            font-size: 30px;
+            letter-spacing: 1.01px;
+        }
+
+        .terminal-img {
+            width: 83px;
+            height: 83px;
+            margin: 0 auto;
+            margin-bottom: 22px;
+        }
+
+        .terminal-item {
+            width: 330px;
+        }
+
+        .terminal-title {
+            width: 330px;
+            font-family: PingFangSC-Medium;
+            font-size: 24px;
+            color: #333333;
+            letter-spacing: 0.8px;
+            margin-bottom: 22px;
+            text-align: center;
+        }
+
+        .terminal-text {
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #333333;
+            letter-spacing: 0.54px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .terminal-box {
+            align-items: flex-start;
+            /* padding: 0 1rem; */
+        }
+
+        .footer {
+            background: #203056;
+            text-align: center;
+            height: 130px;
+            width: 100%;
+            font-size: 14px;
+            color: #ffffff;
+            letter-spacing: 1.17px;
+            overflow: hidden;
+            min-width: 1124px;
+        }
+
+        .footer>div {
+            margin-top: 45px;
+        }
+
+        .ex-button {
+            width:220px;
+            height:40px;
+            margin: 0 auto;
+            text-align: center;
+            line-height:40px;
+            font-size: 22px;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            font-family: PingFangSC-Medium;
+            letter-spacing: 0.74px;
+            cursor: pointer;
+        }
+
+        .bottom {
+            width: 100%;
+            height: 220px;
+            background-image: linear-gradient(90deg, #31BCF8 0%, #32C7B2 100%);
+            color: #FFFFFF;
+            overflow: hidden;
+            min-width: 1124px;
+
+        }
+
+        .bottom .bold-title {
+            font-family: PingFangSC-Medium;
+            font-size: 30px;
+            text-align: center;
+            color: #FFFFFF;
+            letter-spacing: 1.71px;
+            margin-top: 67px;
+            margin-bottom: 30px;
+        }
+
+        .service-img {
+            width: 45px;
+            height: 45px;
+            float: left;
+        }
+
+        .service-text {
+            /* width: 2rem; */
+            height: 45px;
+            line-height: 45px;
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #333333;
+            letter-spacing: 0.54px;
+            float: left;
+            margin-left: 15px;
+        }
+
+        .service-item {
+            overflow: hidden;
+            width: 40%;
+            margin-bottom: 32px;
+        }
+
+        .service-box {
+            padding-left: 2rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .mask {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.56);
+            z-index: 100;
+            top: 0;
+            box-sizing: border-box;
+            display: none;
+        }
+        .sec{
+            width: 569px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+        .sec>img {
+            width: 32px;
+            margin-left: 537px;
+            margin-bottom: 15px;
+            margin-top: 120px;
+        }
+
+        .mask .input-active {
+            background: #fdf3eb;
+            border: 1px solid #f60000;
+        }
+        .submit-btn{
+            cursor: pointer;
+        }
+
+        .submit {
+            width: 120px;
+            height: 40px;
+            background: #2990d5;
+            margin: 0 auto;
+            font-size: 16px;
+            color: #fff;
+            letter-spacing: 2px;
+            text-align: center;
+            line-height: 40px;
+            margin-bottom: -15px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .mask .mb45 {
+            margin-bottom: 20px;
+        }
+        .mask .mb25{
+            margin-bottom: 15px;
+        }
+        .tips2 {
+            font-size: 14px;
+            color: #7b7b7b;
+            width: 499px;
+            margin: 0 auto;
+            margin-left: 116px;
+        }
+
+        .tips {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #f60000;
+            letter-spacing: .47px;
+            line-height: 16px;
+            text-align: right;
+            position: absolute;
+            right: 0;
+            top: .075rem;
+            right: -12px;
+            display: none;
+        }
+        .mask > div {
+            width: 569px;
+            height: 370px;
+            background: #fff;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding-top: 54px;
+        }
+        .mask-title {
+            position: relative;
+            width: 500px;
+            margin: 0 auto;
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #000;
+            letter-spacing: .54px;
+            line-height: 32px;
+        }
+        .mask > div > p > input {
+            display: inline-block;
+            height: 30px;
+            outline: 0;
+            width: 322px;
+            margin: 0 auto;
+            font-size: 14px;
+            margin-bottom: 10px;
+            background: #f6fbff;
+            box-sizing: border-box;
+            border: 1px solid #2990d5;
+            padding-left: 10px;
+        }
+        .close-btn{cursor: pointer;}
+        .layout{
+            width: 1124px;
+            margin: 0 auto;
+        }
+        .message_toast{
+            opacity: 0;
+            color: white;
+            background: rgba(0, 0, 0, 0.55);
+            font-size: 0.26em;
+            position: fixed;
+            z-index: 9999;
+            display: block;
+            width: 6.8rem;
+            height: .88rem;
+            text-align: center;
+            line-height: 0.88rem;
+            border: 0.01rem #eee solid;
+            border-radius: 0.1rem;
+            margin:auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            animation: fadeMess 5s linear;
+            -webkit-animation: fadeMess 5s linear;
+            letter-spacing: .34px;
+        }
+
+        @keyframes fadeMess{
+            25%{opacity: 1;}
+            75%{opacity: 1;}
+            100%{opacity: 0;}
+        }
+
+        @-webkit-keyframes fadeMess{
+            25%{opacity: 1;}
+            75%{opacity: 1;}
+            100%{opacity: 0;}
+        }
+        .hidden{
+            display: none
+        }
+        .transition{
+            -webkit-transition:500ms all ease;
+            -moz-transition:500ms all ease;
+                -ms-transition:500ms all ease;
+                -o-transition:500ms all ease;
+                    transition:500ms all ease;
+        }
+    </style>
+    <title>观云大数据分析平台 - 汇集全网舆情，提供有价值的社会数据洞察</title>
+</head>
+
+<body>
+    <div class="loading">
+        <div class="loading-box">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+    <div class="container">
+        <div class="top"><img src="/images/page/official/ow_icon_logo.png"></div>
+        <div class="banner">
+            <div class="banner-text">基于全网数据<br />提供及时、精准的品牌观测和社会聆听</div>
+            <div class="banner-line"></div>
+            <div class="button submit-btn" data-from="banner">申请体验</div>
+        </div>
+        <div class="nav flex border-bottom layout">
+            <div class="flex nav-flex">
+                <div class="nav-div">
+                    <img class="nav-img" src="/images/page/official/ow_icon_1.png">
+                    <span class="font-title nav-title">探索发现</span>
+                </div>
+                <div class="nav-text">
+                    以成熟的大数据技术支撑，全方位实时整合专业媒体、财经媒体、社交媒体、门户信息流、官方媒体、外媒等情报信息矩阵。
+                </div>
+            </div>
+            <div class="flex nav-flex">
+                <div class="nav-div">
+                    <img class="nav-img" src="/images/page/official/ow_icon_2.png">
+                    <span class="font-title nav-title">智能分析</span>
+                </div>
+                <div class="nav-text">
+                    通过人工智能和深度学习技术，基于专业语料库，在财经类、泛商业类、医疗等领域的文本分析、情感判断方面积累大量经验。
+                </div>
+            </div>
+            <div class="flex nav-flex">
+                <div class="nav-div">
+                    <img class="nav-img" src="/images/page/official/ow_icon_3.png">
+                    <span class="font-title nav-title">专业服务</span>
+                </div>
+                <div class="nav-text">
+                    依托强大的数据和分析能力，通过具有丰富行业知识及专业客户服务能力的分析师，为客户提供全方位的服务。
+                </div>
+            </div>
+        </div>
+        <div class="content-box layout">
+            <div>
+                <img class="content-img" src="/images/page/official/ow_icon_4.jpg">
+                <div class="content-div">
+                    <div class="font-title">速达</div>
+                    <div class="linebox">
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="content-text">智能算法、专业人工排查，及事件自动追踪，实现对负面内容的全方位报警能力，通过微信、钉钉及短信直达客户，获得先人一步的应对机会。</div>
+                </div>
+                <div class="content-div">
+                    <div class="font-title">睿报</div>
+                    <div class="linebox">
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="content-text">按照客户灵活自定义设置的媒体覆盖、关注主体、监测逻辑等，形成美观的邮件日报及周报，提升品牌及公关部门的日常工作效率。</div>
+                </div>
+                <img class="content-img" src="/images/page/official/ow_icon_5.jpg">
+                <img class="content-img" src="/images/page/official/ow_icon_6.jpg">
+                <div class="content-div">
+                    <div class="font-title">洞见</div>
+                    <div class="linebox">
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="content-text">凭借对行业的深入认识，分析师及数据专家可针对完整事件，提供深度的媒体舆情和社交媒体洞察。以报告形式为企业决策提供辅助支持。</div>
+                </div>
+                <div class="content-div">
+                    <div class="font-title">易得</div>
+                    <div class="linebox">
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="content-text">除被动获得推送信息外，客户还可以方便快捷地通过手机网页、微信、钉钉等渠道随时查看需要关注的内容，更全面了解企业的品牌形象。</div>
+                </div>
+                <img class="content-img" src="/images/page/official/ow_icon_7.jpg">
+            </div>
+            <div class="more-button submit-btn" data-from="模块介绍">
+                了解更多
+            </div>
+        </div>
+        <div class="label-content border-bottom border-top">
+            <div class="layout">
+                <div class="font-title">全方位实时化数据采集</div>
+                <div class="label-box flex layout">
+                    <div class="label-item">
+                        <div>新闻媒体</div>
+                        <div>
+                            <div>传统平媒<br />门户网站<br />新兴媒体<br />公众号</div>
+                        </div>
+                    </div>
+                    <div class="label-item">
+                        <div>专业站点</div>
+                        <div>
+                            <div>垂直媒体<br />行业门户<br />行业电商<br />行业社交平台</div>
+                        </div>
+                    </div>
+                    <div class="label-item">
+                        <div>社交平台</div>
+                        <div>
+                            <div>微博<br />问答社区<br />论坛</div>
+                        </div>
+                    </div>
+                    <div class="label-item">
+                        <div>电商网站</div>
+                        <div>
+                            <div>团购平台<br />购物网站<br />旅行OTA</div>
+                        </div>
+                    </div>
+                    <div class="label-item">
+                        <div>应用商店</div>
+                        <div>
+                            <div>苹果应用商店<br />厂商应用商店<br />第三方应用平台</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="more-button submit-btn" data-from="数据源">
+                    了解更多
+                </div>
+            </div>
+        </div>
+        <div class="terminal-content border-bottom layout">
+            <div class="font-title">移动终端 多渠道触达</div>
+            <div class="terminal-box flex">
+                <div class="terminal-item">
+                    <img class="terminal-img" src="/images/page/official/ow_icon_8.png">
+                    <div class="terminal-title">短信</div>
+                    <div class="terminal-text">标准配置<br />不受网络限制<br />方便转发、分享<br />稳定，可靠，高时效</div>
+                </div>
+                <div class="terminal-item">
+                    <img class="terminal-img" src="/images/page/official/ow_icon_9.png">
+                    <div class="terminal-title">微信</div>
+                    <div class="terminal-text">时效和展示信息的平衡<br />操作简单，没有学习成本<br />订阅退订随心所欲<br />除了查看报警，还能提供更多自助服务</div>
+                </div>
+                <div class="terminal-item">
+                    <img class="terminal-img" src="/images/page/official/ow_icon_10.png">
+                    <div class="terminal-title">钉钉群</div>
+                    <div class="terminal-text">专注工作时也不会错过<br />方便管理接收人</div>
+                </div>
+            </div>
+            <div class="more-button submit-btn" data-from="触达渠道">
+                了解更多
+            </div>
+        </div>
+        <div class="terminal-content border-bottom layout">
+            <div class="font-title">个性化行业动态 随时掌握</div>
+            <div class="terminal-box flex">
+                <div class="terminal-item">
+                    <img class="terminal-img" src="/images/page/official/ow_icon_11.png">
+                    <div class="terminal-title">个性内容</div>
+                    <div class="terminal-text">由按客户需求定制时间线内容,<br />我们呈现的，是你所关心的。</div>
+                </div>
+                <div class="terminal-item">
+                    <img class="terminal-img" src="/images/page/official/ow_icon_12.png">
+                    <div class="terminal-title">资讯聚类</div>
+                    <div class="terminal-text">通过智能文本分析引擎，<br />自动聚合类似资讯，梳理事件脉络。</div>
+                </div>
+                <div class="terminal-item">
+                    <img class="terminal-img" src="/images/page/official/ow_icon_13.png">
+                    <div class="terminal-title">智能追踪</div>
+                    <div class="terminal-text">一键设置专项功能，通过<br />关键词主动追踪你所关心的话题。</div>
+                </div>
+            </div>
+            <div class="more-button submit-btn" data-from="功能">
+                了解更多
+            </div>
+        </div>
+        <!--  -->
+        <div class="service-content layout">
+            <div class="font-title">基于客户成功的专业服务</div>
+            <div class="service-box flex">
+                <div class="service-item">
+                    <img class="service-img" src="/images/page/official/ow_icon_14.png">
+                    <div class="service-text">地产、医药产业行业专家</div>
+                </div>
+                <div class="service-item">
+                    <img class="service-img" src="/images/page/official/ow_icon_15.png">
+                    <div class="service-text">7x24客户服务团队</div>
+                </div>
+                <div class="service-item">
+                    <img class="service-img" src="/images/page/official/ow_icon_16.png">
+                    <div class="service-text">海外咨询经验、500+报告撰写</div>
+                </div>
+                <div class="service-item">
+                    <img class="service-img" src="/images/page/official/ow_icon_17.png">
+                    <div class="service-text">远程、现场培训可选</div>
+                </div>
+            </div>
+            <div class="more-button submit-btn" data-from="客服团队">
+                了解更多
+            </div>
+        </div>
+        <!--  -->
+        <div class="bottom">
+            <div class="layout">
+                <div class="bold-title">马上开始您的数据探索之旅</div>
+                <div class="ex-button submit-btn" data-from="bottom">申请体验DEMO</div>
+            </div>
+        </div>
+        <div style="position: fixed;top:50%;right:50px">
+            <div style="position:relative">
+                
+                <div class="divFixedBtn" style="border: 1px solid #BADFF9;margin: 10px auto;background-color: #fff">
+                    <img class="imgFixedBtn" style="width:50px;height:50px" src="/images/icon1.png"/>
+                    <div class="divTextBtn hidden" style="background-color:#4AA5FE;font-size: 14px;color: #fff;text-align: center;width: 50px;height: 50px;position: relative;">
+                        <a style="color:#fff" href="tencent://message/?uin=3357997863&Site=gxlinzi.cn.35so.cn&Menu=yes"><div style="width: 100%;position:absolute;top:50%;transform:translateY(-50%) ">在线<br/>咨询</div></a>
+                    </div>
+                    
+                </div>
+                <div class="divFixedBtn" style="border: 1px solid #BADFF9;margin: 10px auto;background-color: #fff">
+                    <img class="imgFixedBtn" style="width:50px;height:50px" src="/images/icon2.png"/>
+                    <div class="divTextBtn hidden" style="background-color:#4AA5FE;font-size: 14px;color: #fff;text-align: center;width: 50px;height: 50px;position: relative;">
+                        <div style="width: 100%;position:absolute;top:50%;transform:translateY(-50%) ">联系<br/>我们</div>
+                    </div>
+                    <div class="divInfo hidden" style="opacity: 0;background-color: #fff;top:60px;font-size: 14px;position: absolute;left: -240px;padding: 15px;box-shadow: 0px 3px 10px #e6e6e6">
+                        <div style="position:relative">
+                            <div style="color:#4AA5FE">客服电话：</div>
+                            <div>021-5448 2009</div>
+                            <div style="height:10px"></div>
+                            <div style="color:#4AA5FE">服务时间：</div>
+                            <div>周一至周五 10:00-18:00</div>
+                            <div style="height:10px"></div>
+                            <div style="color:#4AA5FE">邮箱：</div>
+                            <div>guanyun@fosun.com</div>
+                            <div style="top: 2px;position: absolute;width: 20px;height: 20px;right: -25px;transform: rotate(45deg);border-bottom: none;border-left: none;border-top: none;border-right: none;background-color: #fff;box-shadow: 3px -2px 5px #f1f1f1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divFixedBtn" style="border: 1px solid #BADFF9;margin: 10px auto;background-color: #fff">
+                    <img class="imgFixedBtn" style="width:50px;height:50px" src="/images/icon3.png"/>
+                    <div class="divTextBtn hidden" style="background-color:#4AA5FE;font-size: 14px;color: #fff;text-align: center;width: 50px;height: 50px;position: relative;">
+                        <div style="width: 100%;position:absolute;top:50%;transform:translateY(-50%) ">关于<br/>我们</div>
+                    </div>
+                    <div class="divInfo hidden" style="background-color: #fff;top:125px;font-size: 14px;position: absolute;left: -240px;padding: 15px;box-shadow: 0px 3px 10px #e6e6e6">
+                        <div style="position:relative">
+                            <div style="display: inline">
+                                <img style="margin:0px auto;" src="/images/qrcode.jpg" />
+                            </div>
+                            
+                            <div style="text-align:center">关注微信<br>获取更多观云信息</div>
+                            <div style="top: 2px;position: absolute;width: 20px;height: 20px;right: -25px;transform: rotate(45deg);border-bottom: none;border-left: none;border-top: none;border-right: none;background-color: #fff;box-shadow: 3px -2px 5px #f1f1f1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divFixedBtn btnLast hidden" style="cursor: pointer;border: 1px solid #BADFF9;margin: 10px auto;background-color: #fff">
+                    <img class="imgFixedBtn" style="width:50px;height:50px" src="/images/icon4.png"/>
+                    <div class="divTextBtn hidden" style="background-color:#4AA5FE;font-size: 14px;color: #fff;text-align: center;width: 50px;height: 50px;position: relative;">
+                        <div style="width: 100%;position:absolute;top:50%;transform:translateY(-50%) ">回到<br/>顶部</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="footer">
+            <div class="layout" style="margin-top:25px">
+                <div style="display: flex;width: 300px;margin: 0px auto;padding-bottom: 20px;cursor: pointer;">
+                    <div style="flex:1"><a style="color:#fff; text-decoration: none" href="/aboutUs.html">企业介绍</a></div>
+                    <div>|</div>
+                    <div style="flex:1"><a style="color:#fff; text-decoration: none" href="/contactUs.html">联系我们</a></div>
+                </div>
+                &copy;2018&nbsp;&nbsp;上海星济信息科技有限公司&nbsp;&nbsp;版权所有<br />沪ICP备17003343号-2
+            </div>
+        </div>
+    </div>
+    <div class="mask">
+        <section class="sec">
+            <img src="/images/page/official/ow_icon_close.png" class="close-btn">
+        </section>
+        <div>
+            <p class="mask-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名:&nbsp;&nbsp;<input maxlength="200" type="text"
+                    class="mb45 name"><span class="tips"> 请填写本项内容</span></p>
+
+            <p class="mask-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电话:&nbsp;&nbsp;<input maxlength="200" type="text"
+                    class="phone"><span class="tips"> 请填写本项内容</span></p>
+            <p class="tips2 mb25">请确保手机号码填写正确</p>
+            <p class="mask-title">公司邮箱:&nbsp;&nbsp;<input maxlength="200" type="text" class="email"><span class="tips mb25">
+                    请填写本项内容</span></p>
+            <p class="tips2 mb25">请填写工作邮箱，不要使用免费邮箱</p>
+            <p class="mask-title">公司名称:&nbsp;&nbsp;<input maxlength="200" type="text" class="mb45 companyname"><span
+                    class="tips">
+                    请填写本项内容</span></p>
+
+            <div class="submit">提交</div>
+        </div>
+    </div>
+    <script>
+        var couldClick = true;
+        //REMJS default => 1920
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 1920) + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+        window.onload = function () {
+            $(".loading").remove();
+            doTd("页面访问", 0);
+            
+        }
+        _BindFunctions('.submit-btn', 'click', function () {
+            console.log($(this).attr("data-from"))
+            doTd($(this).attr("data-from") + "模态框打开", 0)
+            $(".mask").show()
+            $(".tips").hide()
+            $('.name').val("").removeClass("input-active")
+            $('.phone').val("").removeClass("input-active")
+            $('.email').val("").removeClass("input-active")
+            $('.companyname').val("").removeClass("input-active")
+        })
+        _BindFunctions('.close-btn', 'click', function () {
+            doTd("模态框关闭按钮点击", 1)
+            $(".mask").hide();
+            $(".tips").text("请填写本项内容")
+        })
+        _BindFunctions('.submit', 'click', function () {
+            doTd("提交按钮点击", 1)
+            // var requestUrl = "http://10.151.2.103:8310/BusinessService/serviceapply/infos"
+            // var requestUrl = "http://10.151.2.3:9310/BusinessService/serviceapply/infos"
+            // var requestUrl = "http://guanyun.fonova.cn:8130/BusinessService/serviceapply/infos"
+            // var requestUrl = "https://guanyun.fonova.ai:8322/applyservice/serviceapply/infos";
+            var requestUrl = "/official/infos";
+            checkEmpty($('.name'), 0)
+            checkEmpty($('.phone'), 1)
+            checkEmpty($('.email'), 2)
+            checkEmpty($('.companyname'), 3)
+            if (checkEmpty($('.name'), 0) && checkEmpty($('.phone'), 1) && checkEmpty($('.email'), 2) &&
+                checkEmpty($('.companyname'), 3)) {
+                var requestData = {
+                    "userName": $('.name').val(),
+                    "userPhone": $('.phone').val(),
+                    "companyEmail": $('.email').val(),
+                    "companyName": $('.companyname').val()
+                }
+                requestData = JSON.stringify(requestData)
+                if (couldClick) {
+                    couldClick = false;
+                    _postRequest("POST", requestUrl, requestData,
+                        function (data) {
+                            console.log(data)
+                            if (data.meta.errorCode == 1000) {
+                                $(".mask").hide()
+                                toastMessage("信息已成功提交,商务会在一个工作日内联系您。")
+                            } else if (data.meta.errorCode == 1102) {
+                                toastMessage("您提交过于频繁，请稍等片刻再操作。")
+                            } else {
+                                toastMessage("网络不稳定，请稍候重新提交。")
+                            }
+                            couldClick = true;
+                        })
+                }
+            }
+        })
+
+        _BindFunctions('.name', 'blur', function () {
+            checkEmpty($(this), 0)
+        })
+        _BindFunctions('.phone', 'blur', function () {
+            checkEmpty($(this), 1)
+        })
+        _BindFunctions('.email', 'blur', function () {
+            checkEmpty($(this), 2)
+        })
+        _BindFunctions('.companyname', 'blur', function () {
+            checkEmpty($(this), 3)
+        })
+        // 输入过程非空验证
+        _BindFunctions('.name', 'input', function () {
+            checkInput($(this), 0)
+        })
+        _BindFunctions('.phone', 'input', function () {
+            checkInput($(this), 1)
+        })
+        _BindFunctions('.email', 'input', function () {
+            checkInput($(this), 2)
+        })
+        _BindFunctions('.companyname', 'input', function () {
+            checkInput($(this), 3)
+        })
+        /** 
+         * _postRequest
+         * @pData
+         * 
+         * */
+        function _postRequest(pType, pUrl, pData, cb) {
+            $.ajax({
+                type: pType,
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: pData,
+                url: pUrl,
+                success: cb,
+                error: function (e) {
+                    console.log(e)
+                    couldClick = true;
+                }
+            })
+        }
+
+        function checkInput(pDom, pType) {
+            if (pDom.val().trim() === '') {
+                pDom.addClass("input-active")
+                $('.tips').eq(pType).show()
+                return false
+            } else {
+                pDom.removeClass("input-active")
+                $('.tips').eq(pType).hide()
+                return true
+            }
+        }
+        /** 
+         * checkEmpty
+         * @pDom ptype  
+         * */
+        function checkEmpty(pDom, pType) {
+            if (pType === 1) {
+                var reg = /^1[0-9]{10}$/;
+                var flag = reg.test(pDom.val().trim());
+                if (pDom.val().trim() === '') {
+                    pDom.addClass("input-active")
+                    $('.tips').eq(pType).show()
+                    return false
+                } else {
+                    if (!flag) {
+                        pDom.addClass("input-active")
+                        $('.tips').eq(pType).text("手机号码不正确").show()
+                        return false
+                    } else {
+                        pDom.removeClass("input-active")
+                        $('.tips').eq(pType).hide()
+                        return true
+                    }
+                }
+            } else if (pType === 2) {
+                var reg = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+                var flag = reg.test(pDom.val().trim());
+                if (pDom.val().trim() === '') {
+                    pDom.addClass("input-active")
+                    $('.tips').eq(pType).show()
+                    return false
+                } else {
+                    if (!flag) {
+                        pDom.addClass("input-active")
+                        $('.tips').eq(pType).text("邮箱格式不正确").show()
+                        return false
+                    } else {
+                        pDom.removeClass("input-active")
+                        $('.tips').eq(pType).hide()
+                        return true
+                    }
+                }
+            } else {
+                console.log(pType)
+                if (pDom.val().trim() === '') {
+                    pDom.addClass("input-active")
+                    $('.tips').eq(pType).show()
+                    return false
+                } else {
+                    pDom.removeClass("input-active")
+                    $('.tips').eq(pType).hide()
+                    return true
+                }
+            }
+        }
+        /** 
+         * _BindFunctions
+         * @pdom ptype cb 
+         * */
+        function _BindFunctions(pDom, pType, cb) {
+            $(pDom).on(pType, cb)
+        }
+        //绘制toast弹窗消息
+        function toastMessage(pMessage) {
+            var box = document.createElement("div");
+            box.setAttribute("class", "message_toast");
+            box.innerHTML = pMessage;
+            var box_f = document.getElementsByTagName("body")[0];
+            box_f.appendChild(box);
+            box.addEventListener("webkitAnimationEnd", function () {
+                box_f.removeChild(box)
+            })
+        }
+        /** 
+         * _BindFunctions
+         * @pdom ptype cb 
+         * */
+        function doTd(pEvent, pType) {
+            if (!pType) {
+                pType = "访问"
+            } else {
+                pType = "点击"
+            }
+            try {
+                window.TDAPP.onEvent(pEvent, pType)
+                _czc.push(["_trackEvent", pEvent, pType]);
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    </script>
+</body>
+
+</html>
